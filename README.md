@@ -19,3 +19,7 @@ Ejecuta la aplicación en tu localhost.
 ### Configuración de acceso:
 
 En Home.jsx existe una comprobación de credenciales que genera un token, reemplázalo por las tuyas.
+
+Una vez generado el token, mira en LocalStorage y copia el token en RutaProtegida.jsx.
+
+Enjoy!
