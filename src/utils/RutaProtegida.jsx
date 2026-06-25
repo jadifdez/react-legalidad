@@ -8,12 +8,11 @@ const RutaProtegida = ({ children }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       const token = localStorage.getItem('token');
-      const expectedToken = 'YWdlbmNpYWFkaG9jOnNvbW9zYWRob2NAMjAyNCo=';
-      setIsAuthenticated(token === expectedToken);
+      setIsAuthenticated(token === process.env.REACT_APP_CREDENTIALS_HASH);
       setIsLoading(false);
-    }, 3000); // 3 segundos de retraso
+    }, 3000);
 
-    return () => clearTimeout(timer); // Limpiar el temporizador en desmontaje
+    return () => clearTimeout(timer);
   }, []);
 
   if (isLoading) {
@@ -33,11 +32,9 @@ const RutaProtegida = ({ children }) => {
   }
 
   if (!isAuthenticated) {
-    // Si el token no coincide, redirige a la página de inicio de sesión
     return <Navigate to="/" />;
   }
 
-  // Si el token coincide, renderiza el componente hijo
   return children;
 };
 
